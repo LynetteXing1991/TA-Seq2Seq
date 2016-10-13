@@ -1,1 +1,2 @@
-# TA-Seq2Seq
+# Basic attention encoder-decoder
+From Shi Feng
