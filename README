@@ -1,0 +1,30 @@
+TA-Seq2Seq
+
+This project is built on Theano 0.9, python 2.7 and Blocks(https://github.com/mila-udem/blocks). Please make sure they are installed before running this project.
+
+
+Step 1: preparing the data
+
+
+This project requires 3 vocabularies, the query vocabulary, response vocabulary and topic vocabulary. You should build every vocabulary as a dictionary like {'I': 0, 'UNK': 1, 'a': 2, 'student': 3, '</s>': 4} and save it as an pkl file.
+
+This project also requires a query file, a response file and a topic word file, in which the query, response and topic word list attached of a case are saved separately in the same line of the three files.
+
+
+Step 2: checking the configurations
+
+
+Please refer to the function topicAawareJPData() in configurations_base.py as an example of how to write configuration of your experiment.
+
+Let me explain some important features:
+
+The 'topic_vocab_output' and 'topic_vocab_output' are set as the same topic vocabulary built beforehand.
+'topic_embeddings' is the embedding matrix of all topic words in which the i-th row is the embedding of the i-th word in the topic word vocabulary.
+'topical_word_num' is the number of topic words attached for every query (number of words in every line of topic word file).
+'tw_vocab_overlap' is a one-hot matrix that maps topic words with their numbers in the response vocabulary. A simple case is as follows,
+                     I     UNK    a    student   </s>
+student(topic word)[[0      0     0        1       0]
+a(topic word)       [0      0     1        0       0]]
+
+
+Step 3: Run!
